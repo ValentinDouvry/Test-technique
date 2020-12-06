@@ -1,0 +1,178 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "API d’un outil de support Web",
+        "description": "",
+        "license": {
+            "name": "ISC"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/tickets": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Retourne tous les tickets",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Tickets"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket": {
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Ajoute un ticket",
+                "parameters": [
+                    {
+                        "name": "ticket",
+                        "in": "body",
+                        "description": "Le ticket à créer",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Un nouveau ticket est créé",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/{ticketId}": {
+            "parameters": [
+                {
+                    "name": "ticketId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID du ticket recherché",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Récupère le ticket de l'id recherché",
+                "responses": {
+                    "200": {
+                        "description": "Ticket trouvé",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Supprime le ticket de l'id recherché",
+                "tags": [
+                    "Tickets"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ticket supprimé",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Modifie le ticket de l'id recherché",
+                "tags": [
+                    "Tickets"
+                ],
+                "parameters": [
+                    {
+                        "name": "ticket",
+                        "in": "body",
+                        "description": "Ticket avec de nouvelles valeurs",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ticket modifié",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Ticket": {
+            "required": [
+                "_id"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "ObjectId",
+                    "uniqueItems": true
+                },
+                "subject": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "severity": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "modification_notes": {
+                    "type": "array",
+                    "$ref": "#/definitions/ModificationNote"
+                }
+            }
+        },
+        "Tickets": {
+            "type": "array",
+            "$ref": "#/definitions/Ticket"
+        },
+        "ModificationNote": {
+            "properties": {
+                "modified_on": {
+                    "type": "String"
+                },
+                "modified_by": {
+                    "type": "String"
+                },
+                "modification_note": {
+                    "type": "String"
+                }
+            }
+        }
+    }
+}
