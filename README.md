@@ -3,8 +3,8 @@
 # NodeJS dernière LTS (14.15.1 LTS)
 
 # MongoDB (4.4.2 Community)
-Créer une base de données "db_tickets" sur MongoDB
-Créer une collection "tickets" sur MongoDB
+* Créer une base de données "db_tickets" sur MongoDB
+* Créer une collection "tickets" sur MongoDB
 
 # Installation
 ```
