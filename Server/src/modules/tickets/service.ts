@@ -3,8 +3,8 @@ import tickets from './schema';
 
 export default class TicketService {
     
-    public createTicket(ticket_params: ITicket, callback: any) {
-        const _session = new tickets(ticket_params);
+    public createTicket(ticketParams: ITicket, callback: any) {
+        const _session = new tickets(ticketParams);
         _session.save(callback);
     }
 
@@ -12,9 +12,9 @@ export default class TicketService {
         tickets.findOne(query, callback);
     }
 
-    public updateTicket(ticket_params: ITicket, callback: any) {
-        const query = { _id: ticket_params._id };
-        tickets.findOneAndUpdate(query, ticket_params, callback);
+    public updateTicket(ticketParams: ITicket, callback: any) {
+        const query = { _id: ticketParams._id };
+        tickets.findOneAndUpdate(query, ticketParams, callback);
     }
     
     public deleteTicket(_id: String, callback: any) {

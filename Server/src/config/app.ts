@@ -2,20 +2,20 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as mongoose from 'mongoose';
-import { TicketsRoutes } from "../routes/ticket_routes";
-import { CommonRoutes } from "../routes/common_routes";
+import { TicketsRoutes } from "../routes/ticketRoutes";
+import { CommonRoutes } from "../routes/commonRoutes";
 class App {
    public app: express.Application;
    public mongoUrl: string = 'mongodb://localhost/db_tickets';
 
    private routes: TicketsRoutes = new TicketsRoutes();
-   private common_routes: CommonRoutes = new CommonRoutes();
+   private commonRoutes: CommonRoutes = new CommonRoutes();
    constructor() {
       this.app = express();
       this.config();
       this.mongoSetup();
       this.routes.route(this.app);
-      this.common_routes.route(this.app);
+      this.commonRoutes.route(this.app);
    }
    private config(): void {
       // support application/json type post data

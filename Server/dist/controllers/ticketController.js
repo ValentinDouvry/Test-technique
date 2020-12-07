@@ -7,7 +7,7 @@ class TicketController {
     constructor() {
         this.ticket_service = new service_2.default();
     }
-    create_ticket(req, res) {
+    createTicket(req, res) {
         if (req.body.subject && req.body.type && req.body.severity && req.body.priority &&
             req.body.description &&
             req.body.status) {
@@ -37,7 +37,7 @@ class TicketController {
             service_1.insufficientParameters(res);
         }
     }
-    get_ticket(req, res) {
+    getTicket(req, res) {
         if (req.params.id) {
             const ticket_filter = { _id: req.params.id };
             this.ticket_service.filterTicket(ticket_filter, (err, ticket_data) => {
@@ -53,7 +53,7 @@ class TicketController {
             service_1.insufficientParameters(res);
         }
     }
-    update_ticket(req, res) {
+    updateTicket(req, res) {
         if (req.params.id &&
             req.body.subject || req.body.type || req.body.severity || req.body.priority ||
             req.body.description ||
@@ -97,7 +97,7 @@ class TicketController {
             service_1.insufficientParameters(res);
         }
     }
-    delete_ticket(req, res) {
+    deleteTicket(req, res) {
         if (req.params.id) {
             this.ticket_service.deleteTicket(req.params.id, (err, delete_details) => {
                 if (err) {
@@ -115,7 +115,7 @@ class TicketController {
             service_1.insufficientParameters(res);
         }
     }
-    get_tickets(req, res) {
+    getTickets(req, res) {
         this.ticket_service.findAllTickets(req.params, (err, tickets_data) => {
             if (err) {
                 service_1.mongoError(err, res);

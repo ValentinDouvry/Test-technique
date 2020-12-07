@@ -4,18 +4,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const ticket_routes_1 = require("../routes/ticket_routes");
-const common_routes_1 = require("../routes/common_routes");
+const ticketRoutes_1 = require("../routes/ticketRoutes");
+const commonRoutes_1 = require("../routes/commonRoutes");
 class App {
     constructor() {
         this.mongoUrl = 'mongodb://localhost/db_tickets';
-        this.routes = new ticket_routes_1.TicketsRoutes();
-        this.common_routes = new common_routes_1.CommonRoutes();
+        this.routes = new ticketRoutes_1.TicketsRoutes();
+        this.commonRoutes = new commonRoutes_1.CommonRoutes();
         this.app = express();
         this.config();
         this.mongoSetup();
         this.routes.route(this.app);
-        this.common_routes.route(this.app);
+        this.commonRoutes.route(this.app);
     }
     config() {
         // support application/json type post data

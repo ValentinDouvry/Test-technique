@@ -3,28 +3,28 @@ import { TicketController } from '../controllers/ticketController';
 
 export class TicketsRoutes {
 
-    private ticket_controller: TicketController = new TicketController();
+    private ticketController: TicketController = new TicketController();
 
     public route(app: Application) {
         
         app.post('/api/ticket', (req: Request, res: Response) => {
-            this.ticket_controller.create_ticket(req, res);
+            this.ticketController.createTicket(req, res);
         });
 
         app.get('/api/tickets', (req: Request, res: Response) => {
-            this.ticket_controller.get_tickets(req, res);
+            this.ticketController.getTickets(req, res);
         });
 
         app.get('/api/ticket/:id', (req: Request, res: Response) => {
-            this.ticket_controller.get_ticket(req, res);
+            this.ticketController.getTicket(req, res);
         });
 
         app.put('/api/ticket/:id', (req: Request, res: Response) => {
-            this.ticket_controller.update_ticket(req, res);
+            this.ticketController.updateTicket(req, res);
         });
 
         app.delete('/api/ticket/:id', (req: Request, res: Response) => {
-            this.ticket_controller.delete_ticket(req, res);
+            this.ticketController.deleteTicket(req, res);
         });
 
 

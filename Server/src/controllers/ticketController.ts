@@ -8,7 +8,7 @@ export class TicketController {
 
     private ticket_service: TicketService = new TicketService();
 
-    public create_ticket(req: Request, res: Response) {
+    public createTicket(req: Request, res: Response) {
         if (req.body.subject && req.body.type && req.body.severity && req.body.priority &&
             req.body.description &&
             req.body.status) {
@@ -37,7 +37,7 @@ export class TicketController {
         }
     }
 
-    public get_ticket(req: Request, res: Response) {
+    public getTicket(req: Request, res: Response) {
         if (req.params.id) {
             const ticket_filter = { _id: req.params.id };
             this.ticket_service.filterTicket(ticket_filter, (err: any, ticket_data: ITicket) => {
@@ -52,7 +52,7 @@ export class TicketController {
         }
     }
 
-    public update_ticket(req: Request, res: Response) {
+    public updateTicket(req: Request, res: Response) {
         if (req.params.id &&
             req.body.subject || req.body.type || req.body.severity || req.body.priority ||
             req.body.description ||
@@ -93,7 +93,7 @@ export class TicketController {
         }
     }
 
-    public delete_ticket(req: Request, res: Response) {
+    public deleteTicket(req: Request, res: Response) {
         if (req.params.id) {
             this.ticket_service.deleteTicket(req.params.id, (err: any, delete_details) => {
                 if (err) {
@@ -109,7 +109,7 @@ export class TicketController {
         }
     }
 
-    public get_tickets(req: Request, res: Response) {
+    public getTickets(req: Request, res: Response) {
 
         this.ticket_service.findAllTickets(req.params, (err: any, tickets_data: ITicket) => {
             if (err) {
